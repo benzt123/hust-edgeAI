@@ -1,0 +1,20 @@
+{
+  "train": {
+    "samples": 6725,
+    "max_tokens": 635,
+    "long_ids": [],
+    "window_count": 6725,
+    "dropped_samples": 0,
+    "context_is_truncated": false
+  },
+  "validation": {
+    "samples": 748,
+    "max_tokens": 572,
+    "long_ids": [],
+    "window_count": 748,
+    "dropped_samples": 0,
+    "context_is_truncated": false
+  },
+  "total": 7473,
+  "identity": "555afa5d09969047baa145493a474fe0c03c6f26d8aecf451b2cc4278c286864"
+}

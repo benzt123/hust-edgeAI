@@ -1,1 +1,10 @@
 .vscode/
+__pycache__/
+*.py[cod]
+.venv/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.tar.gz
+events.out.tfevents.*
