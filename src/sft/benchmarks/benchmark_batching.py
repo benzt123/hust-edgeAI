@@ -1,4 +1,9 @@
 """空闲GPU上测相同8条样本的micro-batch=1/2/4；不保存训练权重。"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import json
 import time
 import statistics
@@ -9,10 +14,10 @@ from full_data import load_rows,make_split,encode_rows
 from batching import backward_group
 
 
-config=json.loads(Path('server_run_config.json').read_text())
+config=json.loads((SFT_ROOT / 'runtime/server_run_config.json').read_text())
 tokenizer=AutoTokenizer.from_pretrained(config['model'],local_files_only=True)
 rows,_=make_split(load_rows(config['data_dir']),config['validation_fraction'],config['seed'])
-encoded,_=encode_rows(rows,tokenizer,Path('user.txt').read_text().strip(),config)
+encoded,_=encode_rows(rows,tokenizer,(SFT_ROOT / 'runtime/user.txt').read_text().strip(),config)
 model=AutoModelForCausalLM.from_pretrained(config['model'],torch_dtype=torch.float32,
     attn_implementation='sdpa',local_files_only=True).to('cuda')
 model.config.use_cache=False
@@ -46,4 +51,4 @@ for batch in [1,2,4]:
         optimizer.zero_grad(set_to_none=True)
         torch.cuda.empty_cache()
         break
-Path('batch_benchmark.json').write_text(json.dumps(results,indent=2))
+Path(__file__).with_name('batch_benchmark.json').write_text(json.dumps(results,indent=2))

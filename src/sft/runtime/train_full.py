@@ -1,4 +1,9 @@
 """全量 SFT：accumulation 保留为每次更新的样本数，micro-batch 可独立调整。"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import argparse
 import json
 import math
@@ -53,7 +58,7 @@ def main():
         from full_scoring import number
         if number(row['answer']) is None: raise ValueError(f"无法解析标准数值 {row['id']}")
     identity = digest(dict(data=rows,config=config,template=template,
-        core=Path(__file__).with_name('core.py').read_text(encoding='utf-8')))
+        core=(SFT_ROOT / 'core.py').read_text(encoding='utf-8')))
     report = dict(train=train_stats,validation=val_stats,total=len(rows),identity=identity)
     print(json.dumps(report,ensure_ascii=False),flush=True)
     if args.prepare_only:
@@ -100,13 +105,13 @@ def main():
         write_json(run/'versions.json',{p:version(p) for p in ['torch','transformers','datasets']})
         (run/'user.txt').write_text(template,encoding='utf-8')
         for name in ['core.py','train_full.py','full_data.py','full_validation.py','full_scoring.py']:
-            (run/name).write_bytes(Path(__file__).with_name(name).read_bytes())
+            (run/name).write_bytes((SFT_ROOT / name if name in ['core.py','batching.py'] else Path(__file__).with_name(name)).read_bytes())
     writer=None
     with (run/'execution_changes.jsonl').open('a',encoding='utf-8') as stream:
         stream.write(json.dumps(dict(time=datetime.now().isoformat(),resume_step=step,
             micro_batch_size=args.micro_batch_size,effective_batch_size=config['accumulation']))+'\n')
     for name in ['train_full.py','batching.py']:
-        source=Path(__file__).with_name(name)
+        source=(SFT_ROOT / name if name in ['core.py','batching.py'] else Path(__file__).with_name(name))
         if source.exists(): (run/f'active_{name}').write_bytes(source.read_bytes())
     if config['tensorboard']:
         from torch.utils.tensorboard import SummaryWriter

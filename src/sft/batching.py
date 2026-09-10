@@ -1,7 +1,7 @@
 """右侧补齐批量输入；mask 始终与预测目标对齐。"""
 import torch
 from core import shift_batch, response_loss
-from full_validation import response_entropy
+from runtime.full_validation import response_entropy
 
 
 def forward_batch(model, items, pad_id, device):

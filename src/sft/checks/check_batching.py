@@ -1,4 +1,9 @@
 """检查右侧padding、梯度等价和不足一个完整batch的加权。"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import unittest
 from types import SimpleNamespace
 import torch

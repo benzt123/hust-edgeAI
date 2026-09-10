@@ -1,4 +1,9 @@
 """离线验证指定模型，复用训练运行的配置与固定验证题 ID。"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import argparse
 import json
 from pathlib import Path

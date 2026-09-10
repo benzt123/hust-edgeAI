@@ -32,7 +32,7 @@
 
 ## 文件位置
 
-本目录保留train.jsonl、validation.jsonl、best.json、配置/划分/版本信息，以及test_base和test_best中的逐题回答、评分、完整指标。模型权重和续训断点保留在服务器：
+本目录的 raw/ 中保留train.jsonl、validation.jsonl、best.json、配置/划分/版本信息，以及test_base和test_best中的逐题回答、评分、完整指标。模型权重和续训断点保留在服务器：
 
 `/root/autodl-fs/posttrain/sft-full/20260908_162916_198718/`
 

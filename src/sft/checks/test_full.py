@@ -1,4 +1,9 @@
 """CPU 检查：不下载模型，不需要服务器。"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import unittest
 import tempfile
 import random

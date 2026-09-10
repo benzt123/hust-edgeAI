@@ -1,4 +1,9 @@
 """正式训练前用同一精度、优化器和数据路径验证最长样本及一次参数更新。"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import json
 from pathlib import Path
 import torch
@@ -9,10 +14,10 @@ from full_validation import forward_window
 
 
 def main():
-    config = json.loads(Path(__file__).with_name('server_run_config.json').read_text())
+    config = json.loads((SFT_ROOT / 'runtime/server_run_config.json').read_text())
     tokenizer = AutoTokenizer.from_pretrained(config['model'], local_files_only=True)
     rows, _ = make_split(load_rows(config['data_dir']), config['validation_fraction'], config['seed'])
-    template = Path(__file__).with_name('user.txt').read_text(encoding='utf-8-sig').strip()
+    template = (SFT_ROOT / 'runtime/user.txt').read_text(encoding='utf-8-sig').strip()
     encoded, _ = encode_rows(rows, tokenizer, template, config)
     item = max(encoded, key=lambda x: max(len(w[0]) for w in x['windows']))
     model = AutoModelForCausalLM.from_pretrained(config['model'], torch_dtype=torch.float32,

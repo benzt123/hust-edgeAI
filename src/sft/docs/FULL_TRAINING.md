@@ -1,17 +1,17 @@
 # 全量 GSM8K SFT
 
-core.py 保留原样。本目录新增的主程序调用你的 shift_batch、response_loss、backward_microbatch、optimizer_update。
+核心代码位于上级目录，运行配套位于 ../runtime/。下列训练命令默认从 runtime/ 执行。
 
 ## 本地先检查
 
 ```bash
-python check_core.py
-python test_full.py
+python ../checks/check_core.py
+python ../checks/test_full.py
 ```
 
 ## 服务器准备
 
-将新增文件和原 core.py、check_core.py、user.txt 放在 /root/workspace/test/src/SFT。
+上传整个 sft 目录并保留子目录结构，进入服务器上的 sft/runtime 后执行。
 
 ```bash
 conda activate posttrain
@@ -78,7 +78,7 @@ micro-batch=4对应2次反传。最后不足8条按实际条数加权。此选�
 通过 `--resume .../latest.pt --micro-batch-size N` 可在断点切换执行批量，保持数据、
 有效batch、优化器与学习率调度一致。浮点计算顺序变化可能产生细微数值差异，并非位级复现。
 每次执行模式记录在 `execution_changes.jsonl`，实际运行代码另存 `active_*.py`。
-切换前运行 `check_batching.py`；仅在GPU空闲时运行 `benchmark_batching.py` 做速度与最长样本检查。
+切换前运行 `../checks/check_batching.py`；仅在GPU空闲时运行 `../benchmarks/benchmark_batching.py` 做速度与最长样本检查。
 
 ```bash
 bash run_full.sh --resume /root/autodl-tmp/sft-full/某次运行/latest.pt

@@ -1,23 +1,43 @@
-# SFT 核心代码与可复现实验
+# SFT：从这里开始
 
-2026-09-09 从工作区 SFT 目录归档。后续 SFT 修改以本目录为准；工作区旧 SFT 保留作为迁移前副本，不再双向编辑。
+日常主要阅读 `core.py`（你实现的四个核心函数）和 `batching.py`（批量处理）。
 
-- `core.py`：用户完成的 shift、response loss、梯度累积与参数更新四个核心函数。
-- `batching.py`：后续加入的批量执行、padding、attention mask 与累积加权。
-- `benchmark_batching.py`：同一有效batch下对比micro-batch 1/2/4；仅在GPU空闲时运行。
-- `check_core.py`、`check_batching.py`、`test_full.py`：CPU行为检查。
-- `train_full.py`、`full_*.py`、`validate_full.py`：训练、数据、评分与评估支持代码。
-- `smoke_full.py`：GPU最长样本与参数更新检查，不保存正式训练结果。
-- `user.txt`：本次提示词；`server_run_config.json`：实际实验配置，含原服务器路径。
-
-实验指标、完整测试回答与报告位于 `../../reports/sft_20260908/`。已有原始baseline仍在 `../baseline/`，没有修改。旧baseline评分规则与本次不同，直接对比应使用归档结果中的test_base与test_best。
-
-CPU检查：
-
-```bash
-python check_core.py
-python check_batching.py
-python test_full.py
+```text
+sft/
+├── core.py             标签移位、loss、梯度累积、参数更新
+├── batching.py         padding、attention mask、批量反传
+├── runtime/            完整训练、评估、数据处理、配置、提示词和启动脚本
+├── checks/             CPU检查及GPU冒烟检查
+├── benchmarks/         GPU批量测速
+└── docs/               详细运行说明
 ```
 
-运行训练前检查配置中的机器路径。`run_experiment.sh` 是2026-09-08的运行入口快照，含该次日志/状态路径，不宜原样用作新的实验入口，以免混淆记录。完整说明见 `FULL_TRAINING.md`。模型权重和优化器断点留在服务器，不纳入Git。
+## 运行入口
+
+从本目录执行，无需移动脚本：
+
+```bash
+python checks/check_core.py
+python checks/check_batching.py
+python checks/test_full.py
+python runtime/train_full.py --config runtime/server_run_config.json --prepare-only
+python runtime/train_full.py --config runtime/server_run_config.json --micro-batch-size 4
+```
+
+正式训练命令需要服务器环境；先检查配置中的模型、数据和输出路径。配置中accumulation=8代表每次更新覆盖8条样本，micro-batch=4时分两次反传。
+
+测速入口：`python benchmarks/benchmark_batching.py`，仅在GPU空闲时运行。GPU冒烟检查：`python checks/smoke_full.py`。
+
+`runtime/run_experiment.sh`保留了9月8日的日志/状态路径，作为历史入口；新实验应先改为新的运行标识，不直接重复使用旧记录路径。
+
+## 实验结果
+
+- [完整结果](../../reports/sft_20260908/REPORT.md)
+- [测速结果](../../reports/sft_20260908/BENCHMARK.md)
+- `../../reports/sft_20260908/raw/`：原始日志、配置和逐题结果。
+
+原始baseline在`../baseline/`；其旧评分规则与本次不同，对比使用归档的test_base和test_best。
+
+后续以本目录为编辑入口。工作区根目录旧`SFT/`保留为历史副本，本次未删除。
+
+**修改后先让用户审查，得到明确同意后才提交；不要自动提交或推送。**

@@ -1,4 +1,9 @@
 """本地 CPU 测试；不下载模型、不使用 vLLM。python check_core.py"""
+import sys
+from pathlib import Path
+SFT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SFT_ROOT))
+sys.path.insert(0, str(SFT_ROOT / "runtime"))
 import unittest
 import torch
 from core import shift_batch, response_loss, backward_microbatch, optimizer_update
