@@ -1,0 +1,10 @@
+{
+  "total": 50,
+  "correct": 0,
+  "accuracy": 0.0,
+  "format_rate": 0.0,
+  "truncation_rate": 0.14,
+  "answer_tag_missing_count": 42,
+  "grader": "drgrpo_grader.r1_zero_reward_fn",
+  "fast": true
+}

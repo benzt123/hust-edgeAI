@@ -1,0 +1,837 @@
+{
+  "version": "gsm8k_numeric_v2_conservative",
+  "metrics": {
+    "base_test": {
+      "n": 1319,
+      "old_answer_correct": 29,
+      "new_answer_correct": 334,
+      "old_parsed": 76,
+      "new_parsed": 678,
+      "old_format_ok": 340,
+      "new_format_ok": 340,
+      "old_joint_correct": 18,
+      "new_joint_correct": 109,
+      "newly_correct": 305,
+      "lost_correct": 0,
+      "truncated": 45
+    },
+    "sft_test": {
+      "n": 1319,
+      "old_answer_correct": 878,
+      "new_answer_correct": 878,
+      "old_parsed": 1316,
+      "new_parsed": 1317,
+      "old_format_ok": 1318,
+      "new_format_ok": 1318,
+      "old_joint_correct": 878,
+      "new_joint_correct": 878,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 1
+    },
+    "rsft_test": {
+      "n": 1319,
+      "old_answer_correct": 860,
+      "new_answer_correct": 860,
+      "old_parsed": 1315,
+      "new_parsed": 1316,
+      "old_format_ok": 1318,
+      "new_format_ok": 1318,
+      "old_joint_correct": 860,
+      "new_joint_correct": 860,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 1
+    },
+    "rsft_validation_before": {
+      "n": 200,
+      "old_answer_correct": 140,
+      "new_answer_correct": 140,
+      "old_parsed": 200,
+      "new_parsed": 200,
+      "old_format_ok": 200,
+      "new_format_ok": 200,
+      "old_joint_correct": 140,
+      "new_joint_correct": 140,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 0
+    },
+    "trial_validation_before": {
+      "n": 20,
+      "old_answer_correct": 14,
+      "new_answer_correct": 14,
+      "old_parsed": 20,
+      "new_parsed": 20,
+      "old_format_ok": 20,
+      "new_format_ok": 20,
+      "old_joint_correct": 14,
+      "new_joint_correct": 14,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 0
+    },
+    "trial_validation_after": {
+      "n": 20,
+      "old_answer_correct": 11,
+      "new_answer_correct": 11,
+      "old_parsed": 19,
+      "new_parsed": 20,
+      "old_format_ok": 20,
+      "new_format_ok": 20,
+      "old_joint_correct": 11,
+      "new_joint_correct": 11,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 0
+    },
+    "trial_candidates": {
+      "n": 400,
+      "old_answer_correct": 305,
+      "new_answer_correct": 305,
+      "old_parsed": 400,
+      "new_parsed": 400,
+      "old_format_ok": 400,
+      "new_format_ok": 400,
+      "old_joint_correct": 305,
+      "new_joint_correct": 305,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 0
+    },
+    "full_candidates": {
+      "n": 26900,
+      "old_answer_correct": 21766,
+      "new_answer_correct": 21766,
+      "old_parsed": 26861,
+      "new_parsed": 26879,
+      "old_format_ok": 26893,
+      "new_format_ok": 26893,
+      "old_joint_correct": 21764,
+      "new_joint_correct": 21764,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 3
+    },
+    "historical_gsm8k_50": {
+      "n": 50,
+      "old_answer_correct": 3,
+      "new_answer_correct": 18,
+      "old_parsed": 3,
+      "new_parsed": 28,
+      "old_format_ok": 17,
+      "new_format_ok": 17,
+      "old_joint_correct": 3,
+      "new_joint_correct": 10,
+      "newly_correct": 15,
+      "lost_correct": 0,
+      "truncated": 0
+    },
+    "smoke_candidates": {
+      "n": 32,
+      "old_answer_correct": 20,
+      "new_answer_correct": 20,
+      "old_parsed": 32,
+      "new_parsed": 32,
+      "old_format_ok": 32,
+      "new_format_ok": 32,
+      "old_joint_correct": 20,
+      "new_joint_correct": 20,
+      "newly_correct": 0,
+      "lost_correct": 0,
+      "truncated": 0
+    }
+  },
+  "manifest": [
+    {
+      "group": "base_test",
+      "path": "SFT\\results_20260908\\test_base\\predictions.jsonl",
+      "records": 1319,
+      "sha256": "24d4c9156ec4fd50384c1a652c85e6ae8a1b6277fed11755dc384f13a9aef665"
+    },
+    {
+      "group": "sft_test",
+      "path": "SFT\\results_20260908\\test_best\\predictions.jsonl",
+      "records": 1319,
+      "sha256": "8e295284b5ee4ac4690035c00f26b502c74821d729cba505a0827bba10d1f226"
+    },
+    {
+      "group": "rsft_test",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\test_best\\predictions.jsonl",
+      "records": 1319,
+      "sha256": "bd06d22bc6b4f94a625b4ed28dc59f3fbad8a5ddac20b07bb17008a0bef3264f"
+    },
+    {
+      "group": "rsft_validation_before",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\before\\predictions.jsonl",
+      "records": 200,
+      "sha256": "492eea5a1ca353891c0fc516b414e22813b786cc69328c6352dabcbcca9d6838"
+    },
+    {
+      "group": "trial_validation_before",
+      "path": "test\\hust-edgeAI\\reports\\rsft_trial_20260910\\before\\predictions.jsonl",
+      "records": 20,
+      "sha256": "a8ae3641a51b2696c677393b46028533df9ace309a91d4dac1d6d1d61164c286"
+    },
+    {
+      "group": "trial_validation_after",
+      "path": "test\\hust-edgeAI\\reports\\rsft_trial_20260910\\after\\predictions.jsonl",
+      "records": 20,
+      "sha256": "6e3ac45bd01c8e6bfd6a8a20df50eb9405a479e39ec950fd618d896564ad1042"
+    },
+    {
+      "group": "trial_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_trial_20260910\\candidates.jsonl",
+      "records": 400,
+      "sha256": "e4ccae68b1866b7a3e47e622182bc9eab4d6270107c38c5e2d34d5c7f2842bcb"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000000.json",
+      "records": 256,
+      "sha256": "1063acae6533cc124eda8b796ce261bc72588a7b26bc541036a77da2578b656f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000064.json",
+      "records": 256,
+      "sha256": "04dea4c63f304f394b0e62ffed67ec3560618cc9b62f6fcd96c70363b5eac13f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000128.json",
+      "records": 256,
+      "sha256": "627abc1a206be009b4243692ff5293c79efc195b087616d2ed7250d42bd3cddc"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000192.json",
+      "records": 256,
+      "sha256": "20b1efd44918680868719dc8b56ee9ada3bf458843396d1e74af4054d86ed065"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000256.json",
+      "records": 256,
+      "sha256": "f90666323c5c1f57b5442f8979645509c4d04e813fe6dc4f9a74de97fef9c64f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000320.json",
+      "records": 256,
+      "sha256": "c9fdd1c697a79eee9e52e0ae9de2578392cec34cb8e59b1bd8d2cc21ebecdbd3"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000384.json",
+      "records": 256,
+      "sha256": "9a877c28bbe8012be73aa2d6d30fb5130b77a99132a97fb202dc015117513b8f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000448.json",
+      "records": 256,
+      "sha256": "756c4c9f198a0f93b09ec56ac0f133e52cdc261a35d9724542944e9c9f500ac0"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000512.json",
+      "records": 256,
+      "sha256": "1dd1a267b71a92b0ff51371adb175e412042211bec137e70735af3c4bd03f236"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000576.json",
+      "records": 256,
+      "sha256": "324dd0067ae41d24af97abe971b5b6b893461cbbed83e7293b9e549e5e6af470"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000640.json",
+      "records": 256,
+      "sha256": "0cee3214491080f80268ff0572c7ff75d5546fd33f8e48480f060ce10a0e195f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000704.json",
+      "records": 256,
+      "sha256": "59743369bf3e86eae3742c6fe8ab1984eed2d51f6bbcd575ec985a4c4754b9da"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000768.json",
+      "records": 256,
+      "sha256": "cc816cf9509157fbf42a0a32d40cdf55dc9a5307fe58e24d96a4ee32daca44bf"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000832.json",
+      "records": 256,
+      "sha256": "730e77953cc1541470da5587379f773ec512d20650f81839e419baa44a030075"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000896.json",
+      "records": 256,
+      "sha256": "681cc5550de602634b2fe0acf1e1583f6786ebd57f6933e6a65c2a78fa293b03"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\000960.json",
+      "records": 256,
+      "sha256": "fa62d91bc41ee04527bc4363b1e375886dc39540ad3d19e1d380a81136d73af4"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001024.json",
+      "records": 256,
+      "sha256": "c564673e20d570c5eedda00edc3d56900062fc8e1b6755816e2a840000bdc42c"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001088.json",
+      "records": 256,
+      "sha256": "5801d171ea21881d1d623ea3748aa7da351285ad068983ad07865db059b9c2cc"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001152.json",
+      "records": 256,
+      "sha256": "18ad571b6185589ed8028b1046c2a970e8d3908ccbd34e59505a8c53b9476bd2"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001216.json",
+      "records": 256,
+      "sha256": "9194f54d9a5e20f03dcbd09cffdcfc56e6400906a67211c34396b09ce209b4b8"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001280.json",
+      "records": 256,
+      "sha256": "d1c57b9fe0deccd01c2004ca324970901a29269201d7e7c9246f6176910a11cf"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001344.json",
+      "records": 256,
+      "sha256": "2c8b4b6283b79646237a0291df14e6cccbd09cbff93c2f1b71141e9673e245e5"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001408.json",
+      "records": 256,
+      "sha256": "29a5d934c67faa5aa715148f54bcffd5dfd0d262ff40b00d83ac237615a50cbe"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001472.json",
+      "records": 256,
+      "sha256": "b0d948641865211e7cfdb2d7747f281dae9d58e59a79b031e35a25e1f11478f9"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001536.json",
+      "records": 256,
+      "sha256": "9e6c7ecd9db131d02be1cadf1b6ce87d0b7297e2fb8d7af834f9aacf22010a5d"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001600.json",
+      "records": 256,
+      "sha256": "b2c666a620df9dd80e76cd750a4880aebfebad658cca95359c1204e5c7f1217f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001664.json",
+      "records": 256,
+      "sha256": "f0f14de90810f1a67ddbce9a1ff28f979d16db4ea7fc7adcaf64575da053ab22"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001728.json",
+      "records": 256,
+      "sha256": "7c3b47080971857757efa88b59ef29fb9f917b2f0ce09159c9fbf73b9acde349"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001792.json",
+      "records": 256,
+      "sha256": "cc5ce26ef6f86f74e73e3a47f483568c93970862d437ce11e82322432eab62e4"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001856.json",
+      "records": 256,
+      "sha256": "c056fd1d985bc498d6316362af0957a4b8ba34390763520dc0c28042834a2e06"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001920.json",
+      "records": 256,
+      "sha256": "b811d6d300df877e0ec512d398841f3bc39e72bfed6d3850a6491c9b3fe9f064"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\001984.json",
+      "records": 256,
+      "sha256": "c3dc011741a43c5ed14743e942f84c78afa74a42b3f5c37e80189ce20cf466a8"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002048.json",
+      "records": 256,
+      "sha256": "5a6ff37d3a3ccb394ba965238264df557598f7ec507ef345cdc3faff3848352e"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002112.json",
+      "records": 256,
+      "sha256": "472262b07e05139c3e4930c09a0529114bb40e11fc35396753720edf1db30d6c"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002176.json",
+      "records": 256,
+      "sha256": "d03d7edd476bbb1e0c90feceab89eec0afc262d1f917c50fbfaa382d577f11b7"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002240.json",
+      "records": 256,
+      "sha256": "76a491582238b0e09e71bea519ba527ee22843405fe78ef1800e4b7512a0f561"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002304.json",
+      "records": 256,
+      "sha256": "3dd79c9aa84eade403af73e6f318f4de143f1b67eae672e54df1c8be18b4b0ed"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002368.json",
+      "records": 256,
+      "sha256": "6be9701b5ca7e60c7c38123d3eeeff2ba8c7de383eefd5c6ad46c76377af6d28"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002432.json",
+      "records": 256,
+      "sha256": "17a32553ddfe635f420dd8e4dc85b79e264ee26580c7f351816e69d2d460efb7"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002496.json",
+      "records": 256,
+      "sha256": "e81bb2bb35b554654b39e5d5afa12b48af03d1ccfcfd639d8c9d50da5abe5b97"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002560.json",
+      "records": 256,
+      "sha256": "c173d17aaccbb091a6590a71036db6e4d3d1b30376a2e8d013befce332875612"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002624.json",
+      "records": 256,
+      "sha256": "d03e13c92fa8ac810657e89d484a6b9c0c4a706e886a3d4f125a7230d7ede912"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002688.json",
+      "records": 256,
+      "sha256": "3e0e983bb5453deae05cc2cb846562f43bcacaa6bf19bb3ba3efee7736383695"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002752.json",
+      "records": 256,
+      "sha256": "ad39cf326da72f2f5027cd2a851ee15411f53cc6dbf2d12380c87dec0c0b8ef2"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002816.json",
+      "records": 256,
+      "sha256": "cf318cb122f3bc9773cf1834000a1baa02a9f7e54a4c273cac0379fc464444c4"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002880.json",
+      "records": 256,
+      "sha256": "c39c70beee7c51963c5ba4d6941148042f81711021e803573f86b0597cfded82"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\002944.json",
+      "records": 256,
+      "sha256": "c86c6511182a0887fb17a6356c2c2ad162ca5066101e38679a361bb8452dc95e"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003008.json",
+      "records": 256,
+      "sha256": "c809984e7e3d662c3ce9d0cf5633d052bcac347ae3208212ff0e65891d9505bc"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003072.json",
+      "records": 256,
+      "sha256": "5c2ac9dde4bc2513cb0cb88f4cdbfc722b60031cf07699647114ae352462385e"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003136.json",
+      "records": 256,
+      "sha256": "2c887f8bfce6498a025d342bd280c11bd9ed396dbf3f6c2bc56b30c8bedff297"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003200.json",
+      "records": 256,
+      "sha256": "8a4c7f0804a3f846697c04baf862f5527a160c5e8076e083836028f763b54894"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003264.json",
+      "records": 256,
+      "sha256": "287128398c9a4ebd7b2baf7b7160013198727ab3b74d90eb87122f81ceb9e9be"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003328.json",
+      "records": 256,
+      "sha256": "43498d3ab9bb39ecd883efb85f5b1f792714f5fba7bb2443de690c3e8b288798"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003392.json",
+      "records": 256,
+      "sha256": "a0e8ad7fed0fba368ad9f511f4fa79b634551ecdc1822d1950a4ead8819f8247"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003456.json",
+      "records": 256,
+      "sha256": "3653a24796931eebd8aef5fa378eca5f2894ee5fdb33b63e8a9b8db38982c6de"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003520.json",
+      "records": 256,
+      "sha256": "85c75f766d1a709cee478a9336ab60e44abb28fb22222e54d8de6d84f551fcd6"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003584.json",
+      "records": 256,
+      "sha256": "247f65581f06d61ad9917436bc4e9bf7f7d73caa931eb12d388f325e3049be1d"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003648.json",
+      "records": 256,
+      "sha256": "7847aa16eb27286170d92e2bde803079319cde48df48fd1e54a2de03730e6d84"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003712.json",
+      "records": 256,
+      "sha256": "869adf076adb31e281beb843451be72e69ba4ba30f0ff6066230fd89308493b6"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003776.json",
+      "records": 256,
+      "sha256": "82979331e63d9fb459eebae2633dc30b6dc68f7b8a8f697edf826b6bd5807583"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003840.json",
+      "records": 256,
+      "sha256": "7e4de6b8fa4968cd5b07aeb164b56ce4bde3c474681dcd3ad78329124a62fd91"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003904.json",
+      "records": 256,
+      "sha256": "2329dcdedae0b7f13f6386ebc0d62297d4fe70cf58a7c2288a831eedc7d397e5"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\003968.json",
+      "records": 256,
+      "sha256": "ecb85c61656e02f6248011bffd74f3876651ce7119d5915c40554ec8bf5fe77e"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004032.json",
+      "records": 256,
+      "sha256": "babfcfa82928899ceb9cb5ea681f2bdabde43d1bdb1ff343ab964dec1068c82b"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004096.json",
+      "records": 256,
+      "sha256": "451bfba3508dfe030b945a84a5df560572f5e9ab3dd92f3cdb199bc25b528813"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004160.json",
+      "records": 256,
+      "sha256": "fe11d8401808b336a0537c9b44e19e8a79531fef77fe9b2abbd7c51271deb13d"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004224.json",
+      "records": 256,
+      "sha256": "51801a9162b63c5274676cbf092b1850f368264948112bbf0a43d43a3c79d0c1"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004288.json",
+      "records": 256,
+      "sha256": "f334ab89245bc67def9433a6dca672905a11ad4f1012b7c827aa58d08506e132"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004352.json",
+      "records": 256,
+      "sha256": "694a9d507fad5e7acb08f0f2fd7608543e85de66a6b818aec37e2e6b32b51172"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004416.json",
+      "records": 256,
+      "sha256": "bde7aa5713a33743e0f3601e37eef381f320b71c0cb3d1dcf52a2efcefd6b19f"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004480.json",
+      "records": 256,
+      "sha256": "c30bae365c3fbc14cfd286e81c8244d54e6883703f5258b84d0d007f2fa9d2cd"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004544.json",
+      "records": 256,
+      "sha256": "f4f9dd745eaab6c96dd18c52f668e1082d78883127898f0ad6ec8ce7f79babd5"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004608.json",
+      "records": 256,
+      "sha256": "1db766160a191fa9a856982aff80de190ef0578c6e256ef465964621ead78223"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004672.json",
+      "records": 256,
+      "sha256": "88bd0c77ba9a8d93f517d6f42da4274126170c9bfd5035692c05e11c4b518fab"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004736.json",
+      "records": 256,
+      "sha256": "5b815e71b2cd79ce752983b1a27a3e2dc9a9bc49b36057e30d225ef4369a9697"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004800.json",
+      "records": 256,
+      "sha256": "53ead33628a2fe4af3a2e1102cb38cee97cd30602f7b2122deb9e6c1b3fc778c"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004864.json",
+      "records": 256,
+      "sha256": "5b4b7b777391b938c5d46f11d2138e8fe868e199cf6c3d706ce7cfe89e67235c"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004928.json",
+      "records": 256,
+      "sha256": "bae55e5eabd843819ce22dd29c6e9dbb3334a4c133bf04244260abc8954e4b70"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\004992.json",
+      "records": 256,
+      "sha256": "a8f2dd155024cb665a7ed5b8bd3d2f8344c36da116be60e88678df6de74cf06c"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005056.json",
+      "records": 256,
+      "sha256": "2761b103cf665c823af0fec7bfa9a82f490471d80d337b432ecbe57dc42fd5b4"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005120.json",
+      "records": 256,
+      "sha256": "430e161c8749d48de349c03de8399ecd0edb18868644661b3bb60fdde7a4b3e0"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005184.json",
+      "records": 256,
+      "sha256": "26305e526b8ea2874e032f4c540e3d956b05678d348be5b8bf04e724b609c8d2"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005248.json",
+      "records": 256,
+      "sha256": "082afa8f1c1bb91c4b8f5ff5744e19b2ccdc0a7dcf49dd96dedd80c292341ccf"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005312.json",
+      "records": 256,
+      "sha256": "532db68cf53ab5095ba32e9e36c3e2d960f2942fb3e9abed7f425ee5604a01a2"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005376.json",
+      "records": 256,
+      "sha256": "6bb23b2bf2cca5342499616aad8fbefbd9d5840550c30e4b6316840419f26bd5"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005440.json",
+      "records": 256,
+      "sha256": "c12723369e4b2584ee115f4b52f82b4c22da6cd202666d491e72a56a544e4301"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005504.json",
+      "records": 256,
+      "sha256": "3e7be446ea7565dcb8dea687b04f1c4b5c7fe01bf0c20212686e09c5f2cb4dd3"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005568.json",
+      "records": 256,
+      "sha256": "2f22d7247cc28387f233fed1936fee2042010e3cdd33e244a64914bb9bab1842"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005632.json",
+      "records": 256,
+      "sha256": "a250ddb155ef74ec667282f15be244266f2759692a1f129998c6ba48eb26386b"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005696.json",
+      "records": 256,
+      "sha256": "59e9ef960648386e2c1158f38ae421a84f5b6d1b0bece16580710ee58dd9ab86"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005760.json",
+      "records": 256,
+      "sha256": "ab8e1474b873107948e295fcbabb61bff73eb5f06a865d9c32a70803869364e2"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005824.json",
+      "records": 256,
+      "sha256": "7c95516074746abc5fdeae0da7ac4c0b02b92fc0ee4cf13d0b8aedd6dfb3b4ee"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005888.json",
+      "records": 256,
+      "sha256": "d0e9b16c1b9872e6d9f5f7315ddb1eb00f603b24e14fb7dfd94dd9852d4b2004"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\005952.json",
+      "records": 256,
+      "sha256": "14a4bbd4a1c436c0acd1d69887c7f4cf1f3671a04bdadd7e7967c8e62c6fb385"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006016.json",
+      "records": 256,
+      "sha256": "76b32b9a70d66a4f2408c30dd718425e1fdc6065468099d6a38d405abd359106"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006080.json",
+      "records": 256,
+      "sha256": "fd5f76b7e5b6749870ce77b69c16b9c9076d91b3cd75c774cbf3fc47ab3a7959"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006144.json",
+      "records": 256,
+      "sha256": "38d343dff86f2eb989b66957bb1387446bf0d3db28de26b31d5177df86aa2068"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006208.json",
+      "records": 256,
+      "sha256": "4652ca472fab6874a4062022a7e813a044ae05eb1f77254de7ed7eb6d84211ed"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006272.json",
+      "records": 256,
+      "sha256": "247e3aabfdbbde6e6b6c84a619544101f68b7a5c63a2a3c9bd887becb4bd0ee8"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006336.json",
+      "records": 256,
+      "sha256": "61a3cedab9231705735b5f00d5eecc2403d8b935fb544bfc37116fb5544188fa"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006400.json",
+      "records": 256,
+      "sha256": "41b90056a8e7003343e6a4778501b58f869b67c484d7186308051777cfc5f7f1"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006464.json",
+      "records": 256,
+      "sha256": "986b1c1a36f5bdc20d5b13a7879da70056d600da59685d8c6f9334ebcefa9dc0"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006528.json",
+      "records": 256,
+      "sha256": "0df262ebeec465d7550f289ea68436c0f144888cee09fcfe6f91ddc755b27733"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006592.json",
+      "records": 256,
+      "sha256": "e404d7d72dea60d14cbe4137736a90a06d49a949869f6c516879441bcba1b4ee"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006656.json",
+      "records": 256,
+      "sha256": "bcf325fd4e64480bc0ae77c2b4a9ef0ee587d5f1dbf2b47167cd77bf32876c83"
+    },
+    {
+      "group": "full_candidates",
+      "path": "test\\hust-edgeAI\\reports\\rsft_full_20260910\\chunks\\006720.json",
+      "records": 20,
+      "sha256": "e291b1f5c48798e0443471b1c7022f7ad738a22eed88487be0b658610ff95034"
+    },
+    {
+      "group": "historical_gsm8k_50",
+      "path": "test\\hust-edgeAI\\reports\\unified_rescore_20260911\\remote_originals\\runs\\20260905_194346_427196\\results.jsonl",
+      "records": 50,
+      "sha256": "a16cef3e69b789078e47514ea37a2defd2b96812f4731f3ec245309035dee0d7"
+    },
+    {
+      "group": "smoke_candidates",
+      "path": "test\\hust-edgeAI\\reports\\unified_rescore_20260911\\remote_originals\\chunks\\000000.json",
+      "records": 32,
+      "sha256": "dc65a4c616ab3999361be086af1e5467e4f50034794987408664be02d9d6d10b"
+    }
+  ]
+}

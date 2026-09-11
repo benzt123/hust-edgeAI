@@ -1,0 +1,17 @@
+{
+  "sft_code": "/root/workspace/test/src/SFT_run_20260908",
+  "source_run": "/root/autodl-fs/posttrain/sft-full/20260908_162916_198718",
+  "output": "/root/autodl-fs/posttrain/rsft-full-20260910",
+  "seed": 42,
+  "questions": 6725,
+  "group_size": 4,
+  "keep_per_question": 2,
+  "sample_chunk": 64,
+  "validation_questions": 200,
+  "max_new_tokens": 1024,
+  "learning_rate": 5e-06,
+  "effective_batch": 8,
+  "micro_batch": 2,
+  "eval_every": 200,
+  "epochs": 1
+}

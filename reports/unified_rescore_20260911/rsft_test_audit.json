@@ -1,0 +1,89 @@
+[
+  {
+    "id": "test/973",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: India has 4 more than half the number of states in the USA. What's the total number of states in both countries together?\nAssistant: <think>",
+    "gold": "79",
+    "response": "Let the number of states in the USA be S.\nHalf of the number of states in the USA is S/2\nThe number of states in India is S/2+4\nThe total number of states in both countries is S+(S/2+4)=S/2+S+4</think> <answer>2S+4</answer>",
+    "truncated": false,
+    "answer_correct": false,
+    "format_ok": true,
+    "joint_correct": false,
+    "parsed": false,
+    "answer_source": "answer_tag",
+    "extracted_answer": "2S+4",
+    "original_score": {
+      "answer_correct": false,
+      "format_ok": true,
+      "joint_correct": false,
+      "parsed": false,
+      "answer_source": "answer_tag",
+      "extracted_answer": "2S+4"
+    },
+    "unified_score": {
+      "answer_correct": false,
+      "parsed": false,
+      "format_ok": true,
+      "joint_correct": false,
+      "extracted_answer": null,
+      "answer_source": "answer_tag"
+    }
+  },
+  {
+    "id": "test/1001",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Jordan wanted to surprise her mom with a homemade birthday cake.  From reading the instructions, she knew it would take 20 minutes to make the cake batter and 30 minutes to bake the cake.  The cake would require 2 hours to cool and an additional 10 minutes to frost the cake.  If she plans to make the cake all on the same day, what is the latest time of day that Jordan can start making the cake to be ready to serve it at 5:00 pm?\nAssistant: <think>",
+    "gold": "2",
+    "response": "It will take 20 minutes to make the cake batter, 30 minutes to bake the cake, 2 hours to cool 120 minutes, and an additional 10 minutes to frost the cake for a total of 20+30+120+10 = <<20+30+120+10=180>>180 minutes.\nThere are 60 minutes in an hour and it would take 3 hours and 60 minutes to make the cake to serve it at 5:00 pm so Jordan can start making the cake 3 hours and 60 minutes before 5:00 pm or 5:00 pm - 3:00 = <<5-3=2>>2:00 pm</think> <answer>2:00</answer>",
+    "truncated": false,
+    "answer_correct": false,
+    "format_ok": true,
+    "joint_correct": false,
+    "parsed": false,
+    "answer_source": "answer_tag",
+    "extracted_answer": "2:00",
+    "original_score": {
+      "answer_correct": false,
+      "format_ok": true,
+      "joint_correct": false,
+      "parsed": false,
+      "answer_source": "answer_tag",
+      "extracted_answer": "2:00"
+    },
+    "unified_score": {
+      "answer_correct": false,
+      "parsed": false,
+      "format_ok": true,
+      "joint_correct": false,
+      "extracted_answer": null,
+      "answer_source": "answer_tag"
+    }
+  },
+  {
+    "id": "test/1140",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Gomer ate 5 less than 23 scoops of mashed potatoes.  If it takes 3 less than 6 potatoes to make 1 less than 3 scoops of mashed potatoes, how many potatoes did Gomer eat?\nAssistant: <think>",
+    "gold": "27",
+    "response": "He ate 23-5=<<23-5=18>>18 scoops of mashed potatoes\nIt takes 6-3=<<6-3=3>>3 less potatoes to make 1 less than 3 scoops of mashed potatoes\nThis means it takes 3 less than 3 potatoes to make 1 less than 3, or 0 less potatoes to make 1 less than 3, or 1 less than 3, or just 3 potatoes to make 1 less than 3, or 2poles to make 1 less than 3, or 2 potatoes to make 1 less than 3, or 3 less than 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 2 less 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 2 less 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or 0 less potatoes to make 1 less than 3, or 3 less 3, or ",
+    "truncated": true,
+    "answer_correct": false,
+    "format_ok": false,
+    "joint_correct": false,
+    "parsed": false,
+    "answer_source": null,
+    "extracted_answer": null,
+    "original_score": {
+      "answer_correct": false,
+      "format_ok": false,
+      "joint_correct": false,
+      "parsed": false,
+      "answer_source": null,
+      "extracted_answer": null
+    },
+    "unified_score": {
+      "answer_correct": false,
+      "parsed": false,
+      "format_ok": false,
+      "joint_correct": false,
+      "extracted_answer": null,
+      "answer_source": "no_explicit_answer"
+    }
+  }
+]

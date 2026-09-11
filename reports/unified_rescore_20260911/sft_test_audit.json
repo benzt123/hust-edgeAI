@@ -1,0 +1,60 @@
+[
+  {
+    "id": "test/162",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: If a bag of marbles costs $20 and the price increases by 20% of the original price every two months, how much would a bag of marbles cost after 36 months?\nAssistant: <think>",
+    "gold": "92",
+    "response": "the price increase after the first 2 months is 20*.2=$<<20*.2=4>>4\nThe new price of the bag of marbles after 2 months is 20+4=$<<20+4=24>>24\nThe price increase after the second two months is 24*.2=$<<24*.2=4.8>>4.8\nThe new price of the bag of marbles after 4 months is 24+4.8=$<<24+4.8=28.8>>28.8\nThe price increase after the third two months is 28.8*.2=$<<28.8*.2=5.76>>5.76\nThe new price of the bag of marbles after 6 months is 28.8+5.76=$<<28.8+5.76=34.56>>34.56\nThe price increase after the fourth pair of months is 34.56*.2=$<<34.56*.2=6.912>>6.912\nThe new price of the bag of marbles after 8 months is 34.56+6.912=$<<34.56+6.912=41.472>>41.472\nThe price increase after the fifth pair of months is 41.472*.2=$<<41.472*.2=8.2944>>8.2944\nThe new price of the bag of marbles after 10 months is 41.472+8.2944=$<<41.472+8.2944=49.7664>>49.7664\nThe price increase after the sixth pair of months is 49.7664*.2=$<<49.7664*.2=9.95328>>9.95328\nThe new price of the bag of marbles after 12 months is 49.7664+ 9.95328=$<<49.7664+9.95328=59.71968>>59.71968\nThe price increase after the seventh pair of months is 59.71968*.2=$<<59.71968*.2=11.943936>>11.943936\nThe new price of the bag of marbles after 14 months is 59.71968+11.943936=$<<59.71968+11.943936=71.663616>>71.663616\nThe price increase after the eighth pair of months is 71.663616* .2=$<<71.663616*.2=14.3327232>>14.3327232\nThe new price of the bag of marbles after 16 months is 71.663616+14.3327232=$<<71.663616+14.3327232=85.9963392>>85.9963392\nThe price increase after the ninth pair of months is 85.9963392*.2=$17.19926784\nThe new price of the bag of marbles after 18 months is 85.9963392+17.19926784=<<85.9963392+17.19926784=103.19560704>>103.19560704\nThe price increase after the tenth pair of months is 103.19560704*.2=$20.639121408\nThe new price of the bag of marbles after 20 months is 103.19560704+20.639121408=$<<103.19560704+20.6391214",
+    "truncated": true,
+    "answer_correct": false,
+    "format_ok": false,
+    "joint_correct": false,
+    "parsed": false,
+    "answer_source": null,
+    "extracted_answer": null,
+    "original_score": {
+      "answer_correct": false,
+      "format_ok": false,
+      "joint_correct": false,
+      "parsed": false,
+      "answer_source": null,
+      "extracted_answer": null
+    },
+    "unified_score": {
+      "answer_correct": false,
+      "parsed": false,
+      "format_ok": false,
+      "joint_correct": false,
+      "extracted_answer": null,
+      "answer_source": "terminal_line"
+    }
+  },
+  {
+    "id": "test/1001",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Jordan wanted to surprise her mom with a homemade birthday cake.  From reading the instructions, she knew it would take 20 minutes to make the cake batter and 30 minutes to bake the cake.  The cake would require 2 hours to cool and an additional 10 minutes to frost the cake.  If she plans to make the cake all on the same day, what is the latest time of day that Jordan can start making the cake to be ready to serve it at 5:00 pm?\nAssistant: <think>",
+    "gold": "2",
+    "response": "The cake will take 20 + 30 + 2*60 + 10 + 10 = 200 minutes to make\nThus, it will take 200/60 = 3 hours and 20 minutes to make\nTherefore, Jordan needs to start no later than 5:00-3:20 = <<5:00-3:20=1:40>>1:40 pm</think> <answer>1:40</answer>",
+    "truncated": false,
+    "answer_correct": false,
+    "format_ok": true,
+    "joint_correct": false,
+    "parsed": false,
+    "answer_source": "answer_tag",
+    "extracted_answer": "1:40",
+    "original_score": {
+      "answer_correct": false,
+      "format_ok": true,
+      "joint_correct": false,
+      "parsed": false,
+      "answer_source": "answer_tag",
+      "extracted_answer": "1:40"
+    },
+    "unified_score": {
+      "answer_correct": false,
+      "parsed": false,
+      "format_ok": true,
+      "joint_correct": false,
+      "extracted_answer": null,
+      "answer_source": "answer_tag"
+    }
+  }
+]

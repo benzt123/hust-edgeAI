@@ -1,0 +1,7 @@
+{
+  "dataset": "gsm8k",
+  "prompt_order_checked": true,
+  "final_assistant_prefix_checked": true,
+  "strict_format_count": 13,
+  "whitespace_tolerant_format_count_diagnostic_only": 17
+}

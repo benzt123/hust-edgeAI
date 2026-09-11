@@ -1,0 +1,222 @@
+[
+  {
+    "question_id": "train/2483",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Josie received $50 as a gift. She plans to buy two cassette tapes that cost $9 each and a headphone set that costs $25. How much money will she have left?\nAssistant: <think>",
+    "response": "The cassette tapes will cost 2 tapes x $9/tape = $<<2*9=18>>18.\nThe total cost of the cassette tapes and the headphone set is $18 + $25 = $<<18+25=43>>43.\nJosie will have $50 - $43 = $<<50-43=7>>7 left.</think> <answer>7</answer>",
+    "gold": "7",
+    "candidate_index": 0,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/2483",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Josie received $50 as a gift. She plans to buy two cassette tapes that cost $9 each and a headphone set that costs $25. How much money will she have left?\nAssistant: <think>",
+    "response": "The cassette tapes cost 2 tapes x $9/tape = $<<2*9=18>>18.\nThe total cost of her purchases is $18 + $25 = $<<18+25=43>>43.\nShe will have $50 - $43 = $<<50-43=7>>7 left over.</think> <answer>7</answer>",
+    "gold": "7",
+    "candidate_index": 1,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/2483",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Josie received $50 as a gift. She plans to buy two cassette tapes that cost $9 each and a headphone set that costs $25. How much money will she have left?\nAssistant: <think>",
+    "response": "The cassette tapes will cost 2 tapes × $9/tape = $<<2*9=18>>18.\nThe total cost of her purchases will be $18 + $25 = $<<18+25=43>>43.\nShe will have $50 - $43 = $<<50-43=7>>7 left.</think> <answer>7</answer>",
+    "gold": "7",
+    "candidate_index": 2,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/2483",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Josie received $50 as a gift. She plans to buy two cassette tapes that cost $9 each and a headphone set that costs $25. How much money will she have left?\nAssistant: <think>",
+    "response": "The cassette tapes will cost $9 x 2 = $<<9*2=18>>18.\nThe cassette tapes and headphone set will cost $18 + $25 = $<<18+25=43>>43.\nJosie will have $50 - $43 = $<<50-43=7>>7 left.</think> <answer>7</answer>",
+    "gold": "7",
+    "candidate_index": 3,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/6756",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: John gave his fiancee a $4000 ring on their engagement day, a $2000 car as a gift on their wedding day, and a diamond brace twice as expensive as the ring he gave her during the engagement. What's the worth of the presents John gave to her fiancee?\nAssistant: <think>",
+    "response": "The diamond brace is worth 2*$4000=$<<2*4000=8000>>8000\nThe combined worth of the ring and the diamond brace is $8000+$4000=$<<8000+4000=12000>>12000\nTogether, the ring and the diamond brace cost $12000+$2000=$<<12000+2000=14000>>14000</think> <answer>14000</answer>",
+    "gold": "14000",
+    "candidate_index": 0,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/6756",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: John gave his fiancee a $4000 ring on their engagement day, a $2000 car as a gift on their wedding day, and a diamond brace twice as expensive as the ring he gave her during the engagement. What's the worth of the presents John gave to her fiancee?\nAssistant: <think>",
+    "response": "The diamond brace is worth $4000 * 2 = $<<4000*2=8000>>8000.\nThus, John gave his fiancee a total of $4000 + $2000 + $8000 = $<<4000+2000+8000=14000>>14000.</think> <answer>14000</answer>",
+    "gold": "14000",
+    "candidate_index": 1,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/6756",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: John gave his fiancee a $4000 ring on their engagement day, a $2000 car as a gift on their wedding day, and a diamond brace twice as expensive as the ring he gave her during the engagement. What's the worth of the presents John gave to her fiancee?\nAssistant: <think>",
+    "response": "The diamond brace is worth $4000 x 2 = $<<4000*2=8000>>8000.\nSo, John gave his fiancee a total of $4000 + $2000 + $8000 = $<<4000+2000+8000=14000>>14000.</think> <answer>14000</answer>",
+    "gold": "14000",
+    "candidate_index": 2,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/6756",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: John gave his fiancee a $4000 ring on their engagement day, a $2000 car as a gift on their wedding day, and a diamond brace twice as expensive as the ring he gave her during the engagement. What's the worth of the presents John gave to her fiancee?\nAssistant: <think>",
+    "response": "The value of the diamond brace is $4000 x 2 = $<<4000*2=8000>>8000.\nThe total value of the ring, car, and bracelet John gave her fiancee is $4000 + $2000 + $8000 = $<<4000+2000+8000=14000>>14000.</think> <answer>14,000</answer>",
+    "gold": "14000",
+    "candidate_index": 3,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/226",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: There are 32 tables in a hall. Half the tables have 2 chairs each, 5 have 3 chairs each and the rest have 4 chairs each. How many chairs in total are in the hall?\nAssistant: <think>",
+    "response": "There are 32 / 2 = <<32/2=16>>16 tables with 2 chairs each.\nThese tables have a total of 16 x 2 = <<16*2=32>>32 chairs.\nThe 5 tables have a total of 5 x 3 = <<5*3=15>>15 chairs.\nThere are 16 + 5 = <<16+5=21>>21 tables that have 4 chairs each.\nThese tables have a total of 21 x 4 = <<21*4=84>>84 chairs.\nIn total, there are 32 + 15 + 84 = <<32+15+84=131>>131 chairs in the hall.</think> <answer>131</answer>",
+    "gold": "91",
+    "candidate_index": 0,
+    "answer_correct": false,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/226",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: There are 32 tables in a hall. Half the tables have 2 chairs each, 5 have 3 chairs each and the rest have 4 chairs each. How many chairs in total are in the hall?\nAssistant: <think>",
+    "response": "Half of the tables is 32/2 = <<32/2=16>>16 tables\n16 tables have 2 chairs each for a total of 16*2 = <<16*2=32>>32 chairs\n5 tables have 3 chairs each for a total of 5*3 = <<5*3=15>>15 chairs\nThere are 32/2 = <<32/2=16>>16 tables with 4 chairs\n16 tables have 4 chairs each for a total of 16*4 =<<16*4=64>>64 chairs\nThere are a total of 32+15+64 = <<32+15+64=111>>111 chairs in the hall</think> <answer>111</answer>",
+    "gold": "91",
+    "candidate_index": 1,
+    "answer_correct": false,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/226",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: There are 32 tables in a hall. Half the tables have 2 chairs each, 5 have 3 chairs each and the rest have 4 chairs each. How many chairs in total are in the hall?\nAssistant: <think>",
+    "response": "There are 32 / 2 = <<32/2=16>>16 tables with 2 chairs each.\nThe 16 tables with 2 chairs each have a total of 16 x 2 = <<16*2=32>>32 chairs.\nThe 5 tables with 3 chairs each have a total of 5 x 3 = <<5*3=15>>15 chairs.\nThere are 32 - 16 - 5 = <<32-16-5=6>>6 tables with 4 chairs each.\nThese tables have a total of 6 x 4 = <<6*4=24>>24 chairs.\nIn the hall, there is a total of 32 + 15 + 24 = <<32+15+24=71>>71 chairs</think> <answer>71</answer>",
+    "gold": "91",
+    "candidate_index": 2,
+    "answer_correct": false,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/226",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: There are 32 tables in a hall. Half the tables have 2 chairs each, 5 have 3 chairs each and the rest have 4 chairs each. How many chairs in total are in the hall?\nAssistant: <think>",
+    "response": "Half of 32 tables is 32*(1/2) = <<32*(1/2)=16>>16 tables\n16 tables have 2 chairs each for a total of 16*2=<<16*2=32>>32 chairs\n5 tables have 3 chairs each for a total of 3*5=<<3*5=15>>15 chairs\nThere are 32 chairs in the hall minus the 32 chairs at the half-full tables, minus the 15 chairs at the 5-full tables, leaving 32-32-15=<<32-32-15=-15=0>>15 tables with 4 chairs each for a total of 15*4=<<15*4=60>>60 chairs</think> <answer>60</answer>",
+    "gold": "91",
+    "candidate_index": 3,
+    "answer_correct": false,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/1010",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Erin works in the school cafeteria serving soup. Each bowl of soup has 10 ounces, and Erin can serve 5 bowls per minute. If the pot of soup has 6 gallons of soup, how long will it take Erin to serve all the soup, rounded to the nearest minute? (There are 128 ounces to a gallon.)\nAssistant: <think>",
+    "response": "First find the number of ounces Erin serves per minute: 10 ounces/bowl * 5 bowls/minute = <<10*5=50>>50 ounces/minute\nThen find the number of ounces Erin serves per gallon: 128 ounces/gallon / 50 ounces/minute = 2.56 minutes/gallon\nThen divide the number of gallons by the time served per gallon to find the total serving time: 6 gallons * 2.56 minutes/gallon = <<6*2.56=15.36>>15.36 minutes</think> <answer>15</answer>",
+    "gold": "15",
+    "candidate_index": 0,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/1010",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Erin works in the school cafeteria serving soup. Each bowl of soup has 10 ounces, and Erin can serve 5 bowls per minute. If the pot of soup has 6 gallons of soup, how long will it take Erin to serve all the soup, rounded to the nearest minute? (There are 128 ounces to a gallon.)\nAssistant: <think>",
+    "response": "First find the number of ounces Erin serves per minute: 10 ounces/bowl * 5 bowls/minute = 50 ounces/minute\nThen find how many ounces of soup there are: 6 gallons * 128 ounces/gallon = <<6*128=768>>768 ounces\nThen divide the total ounces of soup by the number of ounces Erin serves per minute to find the time to last her: 768 minutes / 50 minutes = 15.36 minutes, which rounds to 15 minutes</think> <answer>15</answer>",
+    "gold": "15",
+    "candidate_index": 1,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/1010",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Erin works in the school cafeteria serving soup. Each bowl of soup has 10 ounces, and Erin can serve 5 bowls per minute. If the pot of soup has 6 gallons of soup, how long will it take Erin to serve all the soup, rounded to the nearest minute? (There are 128 ounces to a gallon.)\nAssistant: <think>",
+    "response": "There are 6 gallons *128 ounces/gallon = <<6*128=768>>768 ounces of soup.\nThis is a total of 768 ounces / 10 ounces/bowl = <<768/10=76.8>>76.8 bowls\nIt will take Erin 76.8 bowls/5 bowls/minute = 15.36 minutes.\nErin will serve all the soup in 15 minutes.</think> <answer>15</answer>",
+    "gold": "15",
+    "candidate_index": 2,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/1010",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Erin works in the school cafeteria serving soup. Each bowl of soup has 10 ounces, and Erin can serve 5 bowls per minute. If the pot of soup has 6 gallons of soup, how long will it take Erin to serve all the soup, rounded to the nearest minute? (There are 128 ounces to a gallon.)\nAssistant: <think>",
+    "response": "First find the number of ounces Erin serves per minute: 10 ounces/bowl * 5 bowls/minute = <<10*5=50>>50 ounces/minute\nThen find the number of ounces in the pot: 6 gallons * 128 ounces/gallon = <<6*128=768>>768 ounces\nThen divide the number of ounces in the pot by the number of ounces Erin serves per minute: 768 ounces / 50 ounces/minute = <<768/50=15.36>>15.36 minutes, which rounds down to 15 minutes</think> <answer>15</answer>",
+    "gold": "15",
+    "candidate_index": 3,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/5814",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Hillary's teacher assigned 1 hour of reading during the weekend. On Friday night, Hillary read for 16 minutes. On Saturday she read for 28 minutes. How many minutes does Hillary have to read on Sunday to complete the assignment?\nAssistant: <think>",
+    "response": "Hillary has to read for 60 * 1 = <<60*1=60>>60 minutes.\nHillary read a total of 16 + 28 = <<16+28=44>>44 minutes on Friday and Saturday.\nHillary has to read for 60 - 44 = <<60-44=16>>16 minutes on Sunday.</think> <answer>16</answer>",
+    "gold": "16",
+    "candidate_index": 0,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/5814",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Hillary's teacher assigned 1 hour of reading during the weekend. On Friday night, Hillary read for 16 minutes. On Saturday she read for 28 minutes. How many minutes does Hillary have to read on Sunday to complete the assignment?\nAssistant: <think>",
+    "response": "1 hour is equal to 60 minutes.\nHillary needs to read for 60 - 16 - 28 = <<60-16-28=16>>16 minutes on Sunday.</think> <answer>16</answer>",
+    "gold": "16",
+    "candidate_index": 1,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/5814",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Hillary's teacher assigned 1 hour of reading during the weekend. On Friday night, Hillary read for 16 minutes. On Saturday she read for 28 minutes. How many minutes does Hillary have to read on Sunday to complete the assignment?\nAssistant: <think>",
+    "response": "Add the amount of time Hillary has already spent reading: 16 minutes + 28 minutes = <<16+28=44>>44 minutes\nSubtract the amount of time Hillary has already spent reading from the amount of time assigned to find the amount of time Hillary has to spend reading: 60 minutes - 44 minutes = <<60-44=16>>16 minutes</think> <answer>16</answer>",
+    "gold": "16",
+    "candidate_index": 2,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  },
+  {
+    "question_id": "train/5814",
+    "prompt": "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: Hillary's teacher assigned 1 hour of reading during the weekend. On Friday night, Hillary read for 16 minutes. On Saturday she read for 28 minutes. How many minutes does Hillary have to read on Sunday to complete the assignment?\nAssistant: <think>",
+    "response": "Hillary needs to read for 1 hour, or 60 minutes.\nHillary has read for 16 + 28 = <<16+28=44>>44 minutes so far.\nHillary has to read for 60 - 44 = <<60-44=16>>16 minutes on Sunday.</think> <answer>16</answer>",
+    "gold": "16",
+    "candidate_index": 3,
+    "answer_correct": true,
+    "format_ok": true,
+    "truncated": false,
+    "finish_reason": "stop"
+  }
+]

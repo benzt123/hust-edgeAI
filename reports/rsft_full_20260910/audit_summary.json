@@ -1,0 +1,17 @@
+{
+  "test_count": 1319,
+  "old_correct": 878,
+  "new_correct": 860,
+  "both_correct": 692,
+  "regressions": 186,
+  "improvements": 168,
+  "both_wrong": 273,
+  "selected": 12329,
+  "one_answer_questions": 457,
+  "two_answer_questions": 5936,
+  "identical_two_answer_questions": 376,
+  "updates": 1542,
+  "peak_allocated_gib": 28.841341972351074,
+  "peak_reserved_gib": 35.185546875,
+  "finished": "2026-09-10T19:49:05.312722+08:00"
+}

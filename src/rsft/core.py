@@ -9,6 +9,7 @@
 不加载模型、不计算奖励、不执行训练。保留的 response 应是完整生成解答，
 不能替换成标准答案，也不要在这里添加或删除 think/answer 标签。
 """
+import random
 
 
 def select_correct_samples(candidates):
@@ -49,10 +50,46 @@ def select_correct_samples(candidates):
     return selected
 
 
+def select_up_to_k_per_question(selected, k=2, seed=42):
+    """每题最多保留k条合格回答，不足k条全部保留，不补齐。
+
+    输入selected来自select_correct_samples；不在这里重复评分。
+    相同输入顺序和seed可复现选择。不同候选即使文本相同也不去重。
+    返回新字典，不修改输入；没有合格回答的题自然跳过。
+    """
+    if not isinstance(k, int) or isinstance(k, bool) or k < 1:
+        raise ValueError("k 必须是大于等于1的整数")
+
+    # 第一步：按题目分组。每个题目ID对应一个回答列表。
+    grouped = {}
+    for sample in selected:
+        question_id = sample["question_id"]
+        if question_id not in grouped:
+            grouped[question_id] = []
+        grouped[question_id].append(sample)
+
+    # 第二步：超过上限就随机抽取；不足上限不填空、不复制。
+    rng = random.Random(seed)
+    result = []
+    for samples in grouped.values():
+        if len(samples) <= k:
+            chosen = samples
+        else:
+            chosen = rng.sample(samples, k)
+
+        # 第三步：把各题选出的回答汇总成一个列表。
+        for sample in chosen:
+            result.append(sample.copy())
+
+    return result
+
+
 def summarize_candidates(candidates, selected):
     """进阶练习：区分“回答通过率”和“题目覆盖率”。
 
-    selected 必须来自 select_correct_samples(candidates)。
+    selected 是合格回答，或从合格回答中按每题上限再次筛出的子集。
+    对合格回答统计时acceptance_rate表示质量通过率；
+    对限制数量后的结果统计时，它表示最终保留率，不能混为一谈。
     返回一个包含以下字段的字典：
         candidate_count: 候选回答总数。
         selected_count: 保留下来的回答总数。
@@ -82,7 +119,7 @@ def summarize_candidates(candidates, selected):
     for sel_q in selected:
         sel_question_ids.add(sel_q["question_id"])
     covered_question_count = len(sel_question_ids)
-    covered_rate = question_count / covered_question_count if covered_question_count > 0 else 0.0
+    covered_rate = covered_question_count / question_count if question_count > 0 else 0.0
 
     # TODO 6：按文档中的六个字段名构造并返回统计字典。
     return {
@@ -117,6 +154,14 @@ if __name__ == "__main__":
     print("预期：只保留 A、B 两条完整解答，每条包含三个字段。")
     print("空输入结果：", select_correct_samples([]))
 
-    # 完成 TODO 4～6 后，取消下一行注释再运行：
     print("统计结果：", summarize_candidates(EXAMPLE_CANDIDATES, result))
     # 预期：5个候选，保留2个，通过率0.4；3道题，覆盖1道，覆盖率1/3。
+
+    # 单独演示数量上限：第一题3条合格回答，第二题只有1条。
+    qualified = result + [
+        dict(question_id="demo/1", prompt="示例题目一", response="完整解答 F"),
+        dict(question_id="demo/2", prompt="示例题目二", response="完整解答 G"),
+    ]
+    selected = select_up_to_k_per_question(qualified, k=2, seed=42)
+    print("每题最多两条：", selected)
+    print("预期：第一题随机留下2条，第二题留下1条，共3条。")
