@@ -1,0 +1,18 @@
+{
+  "source_model": "/root/autodl-fs/posttrain/rsft-full-20260910/best_model",
+  "sft_run": "/root/autodl-fs/posttrain/sft-full/20260908_162916_198718",
+  "sft_code": "/root/workspace/test/src/SFT_run_20260908",
+  "candidates": "/root/autodl-fs/posttrain/rsft-full-20260910/chunks",
+  "output": "/root/autodl-fs/posttrain/dpo-20260911-r1",
+  "seed": 42,
+  "beta": 0.1,
+  "learning_rate": 0.000001,
+  "warmup_ratio": 0.1,
+  "epochs": 1,
+  "effective_batch": 8,
+  "micro_batch": 1,
+  "max_length": 4096,
+  "validation_questions": 200,
+  "eval_every": 100,
+  "save_every": 50
+}

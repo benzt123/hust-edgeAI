@@ -25,7 +25,48 @@ def build_preference_pairs(candidates, seed=42):
        不修改输入字典；空输入返回 []；不补造回答。
     """
     rng = random.Random(seed)
-    raise NotImplementedError("TODO 1：同题偏好配对")
+    group = {}
+    for candidate in candidates:
+        qid = candidate['question_id']
+        prompt = candidate['prompt']
+        if qid not in group:
+            group[qid] = {'prompt': prompt, 
+                          'chosen': [], 
+                          'rejected': []}
+        group_entry = group[qid]
+        if group_entry['prompt'] != prompt:
+            raise ValueError(f"question_id {qid} has inconsistent prompts")
+        
+        usable = (candidate['format_ok'] and
+                   not candidate['truncated'] and 
+                   candidate['parsed'])
+        if not usable:
+            continue
+
+        response = candidate['response']
+        if candidate['answer_correct']:
+            pool = group_entry['chosen']
+        else:
+            pool = group_entry['rejected']
+        if response not in pool:
+            pool.append(response)
+
+    # 收集完全部候选后，再对每道题抽样一次。
+    pairs = []
+    for qid, entry in group.items():
+        chosen_p = entry['chosen']
+        rejected_p = entry['rejected']
+        if set(chosen_p) & set(rejected_p):
+            raise ValueError(f"question_id {qid} has conflicting responses")
+        if not chosen_p or not rejected_p:
+            continue
+        pairs.append({
+            'question_id': qid,
+            'prompt': entry['prompt'],
+            'chosen': rng.choice(chosen_p),
+            'rejected': rng.choice(rejected_p)
+        })
+    return pairs
 
 
 def sequence_log_probs(logits, input_ids, response_mask):
@@ -45,7 +86,21 @@ def sequence_log_probs(logits, input_ids, response_mask):
     每条移位后的 mask 至少有一个有效 token，否则抛 ValueError。
     不按回答长度平均、不取负号、不调用 item 或 detach。
     """
-    raise NotImplementedError("TODO 2：回答序列 log 概率")
+    shift_logits = logits[:, :-1, :]
+    shift_labels = input_ids[:, 1:]
+    shift_mask = response_mask[:, 1:]
+
+    if (shift_mask.sum(dim=1) == 0).any():
+        raise ValueError("Each shifted mask must have at least one valid token.")
+
+    all_log_probs = F.log_softmax(shift_logits.float(), dim=-1)
+    token_log_probs = all_log_probs.gather(
+        dim=-1,
+        index=shift_labels.unsqueeze(-1)
+    ).squeeze(-1)
+    token_log_probs = token_log_probs * shift_mask.to(token_log_probs.dtype)
+    squeezed_scores = token_log_probs.sum(dim=1)
+    return squeezed_scores
 
 
 def dpo_loss(policy_chosen, policy_rejected, ref_chosen, ref_rejected, beta=0.1):
@@ -60,7 +115,26 @@ def dpo_loss(policy_chosen, policy_rejected, ref_chosen, ref_rejected, beta=0.1)
     使用 logsigmoid，不要先 sigmoid 再 log（数值稳定性）。
     检查 beta > 0，输入为同形状、非空的一维 tensor。
     """
-    raise NotImplementedError("TODO 3：DPO loss")
+    if beta <= 0:
+        raise ValueError("beta must be greater than 0.")
+
+    scores = (policy_chosen, policy_rejected, ref_chosen, ref_rejected)
+    if any(x.ndim != 1 or x.numel() == 0 for x in scores):
+        raise ValueError("All inputs must be non-empty 1D tensors.")
+    if any(x.shape != policy_chosen.shape for x in scores):
+        raise ValueError("All inputs must have the same shape.")
+
+    ref_chosen= ref_chosen.detach()
+    ref_rejected = ref_rejected.detach()
+
+    policy_margin = policy_chosen - policy_rejected
+    reference_margin = ref_chosen - ref_rejected
+
+    z = beta * (policy_margin - reference_margin)
+
+    per_pair_loss = -F.logsigmoid(z)
+    batch_loss = per_pair_loss.mean()
+    return batch_loss
 
 
 def freeze_reference(reference):
