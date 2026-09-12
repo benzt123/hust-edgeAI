@@ -27,7 +27,35 @@ def parse_problem_and_answer(text):
     → 切出题干与答案 → 检查非空与答案行数。
     本函数只解析格式，不证明题目可解，也不验证答案数值。
     """
-    raise NotImplementedError('TODO 1：解析问题和模型参考答案')
+    text = text.strip()
+    problem_matches = list (
+        re.finditer(r"^[ \t]*Problem:", text, flags=re.MULTILINE)
+    )
+    answer_matches = list(
+        re.finditer(r"^[ \t]*Answer:", text, flags=re.MULTILINE)
+    )
+
+    if len(problem_matches) != 1 or len(answer_matches) != 1:
+        return None, None
+
+    problem_tag = problem_matches[0]
+    answer_tag = answer_matches[0]
+
+    if problem_tag.start() != 0:
+        return None, None
+    if answer_tag.start() < problem_tag.end():
+        return None, None
+
+    problem = text[problem_tag.end():answer_tag.start()].strip()
+    proposed_answer = text[answer_tag.end():].strip()
+
+    if not problem or not proposed_answer:
+        return None, None
+
+    if len(proposed_answer.splitlines()) != 1:
+        return None, None
+
+    return problem, proposed_answer
 
 
 def prepare_problems(generations, answer_supported, blocked_problem_keys=()):
@@ -47,7 +75,29 @@ def prepare_problems(generations, answer_supported, blocked_problem_keys=()):
     即使同题附带不同答案，也不要将其当作两道题反复训练；首次保留只是
     简单的去重策略，不代表首次答案正确。正式配套应记录丢弃原因供审查。
     """
-    raise NotImplementedError('TODO 2：过滤、去重与稳定题目 ID')
+    blocked = set(blocked_problem_keys)
+    seen = set()
+    problems = []
+    for generation in generations:
+        if generation['truncated']:
+            continue
+        problem, proposed_answer = parse_problem_and_answer(
+            generation['text']
+            )
+        if problem is None or proposed_answer is None:
+            continue
+        if not answer_supported(proposed_answer):
+            continue
+        key = problem_key(problem)
+        if key in blocked or key in seen:
+            continue
+        seen.add(key)
+        problems.append({
+            'question_id': problem_id(key),
+            'problem': problem,
+            'proposed_answer': proposed_answer,
+        })
+    return problems
 
 
 def format_solve_prompt(problem, template):
@@ -59,7 +109,11 @@ def format_solve_prompt(problem, template):
     不使用 str.format，以免数学公式中的其他大括号被当成占位符。
     函数不接收 proposed_answer，防止把参考答案直接泄漏给 solver。
     """
-    raise NotImplementedError('TODO 3：构造不含参考答案的解题提示')
+    if not problem.strip():
+        raise ValueError("problem 不能为空")
+    if template.count("{question}") != 1:
+        raise ValueError("template 必须包含且只包含一次 {question}")
+    return template.replace("{question}", problem)
 
 
 def build_reward_groups(problems, candidates, grade, group_size):
@@ -83,7 +137,64 @@ def build_reward_groups(problems, candidates, grade, group_size):
     注意：评分中的 answer_correct 仅表示与 proposed_answer 相符。
     这里不做 tokenization，不算 advantage；后面直接复用 GRPO 核心。
     """
-    raise NotImplementedError('TODO 4：完整候选分组与奖励')
+    if (
+        isinstance(group_size, bool) or
+        not isinstance(group_size, int) or
+        group_size < 2
+    ):
+        raise ValueError("group_size 必须是 >=2 的整数")
+    problem_map = {}
+    grouped = {}
+
+    for problem in problems:
+        qid = problem['question_id']
+        if qid in problem_map:
+            raise ValueError(f"重复的 question_id: {qid}")
+        problem_map[qid] = problem
+        grouped[qid] = [None] * group_size
+
+    for candidate in candidates:
+        qid = candidate['question_id']
+        index = candidate['candidate_index']
+        if qid not in problem_map:
+            raise ValueError(f"未知的 question_id: {qid}")
+        if (            
+            isinstance(index, bool)
+            or not isinstance(index, int)
+            or not 0 <= index < group_size
+        ):
+            raise ValueError(f"非法的 candidate_index: {index}")
+        if grouped[qid][index] is not None:
+            raise ValueError(f"重复的 candidate_index {index} for question_id {qid}")
+        grouped[qid][index] = candidate
+
+    results = []
+    for problem in problems:
+        qid = problem['question_id']
+        proposed_answer = problem['proposed_answer']
+        indexed_candidates = grouped[qid]
+        if any(candidate is None for candidate in indexed_candidates):
+            raise ValueError(f"缺少候选回答 for question_id {qid}")
+        responses = []
+        rewards = []
+        for index in range(group_size):
+            candidate = indexed_candidates[index]
+            response = candidate['response']
+            score = grade(response, proposed_answer)
+            accepted = (
+                score['answer_correct'] and
+                score['format_ok'] and
+                score['parsed'] and
+                not candidate['truncated']
+            )
+            responses.append(response)
+            rewards.append(1.0 if accepted else 0.0)
+        results.append({
+            'question_id': qid,
+            'responses': responses,
+            'rewards': rewards,
+        })
+    return results
 
 
 def problem_key(problem):

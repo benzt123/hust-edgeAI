@@ -27,6 +27,10 @@ def main():
     grader=importlib.util.module_from_spec(spec);spec.loader.exec_module(grader)
     tokenizer=AutoTokenizer.from_pretrained(c['model']['initial_weights'],local_files_only=True)
     template=(HERE/c['prompt']['file']).read_text(encoding='utf-8').rstrip()
+    repair_spec=json.loads((HERE/c['dataset']['gold_repairs_file']).read_text(encoding='utf-8'))
+    assert repair_spec['dataset_revision']==c['dataset']['revision']
+    repairs={r['id']:r for r in repair_spec['repairs']}
+    applied=[]
     sets={};manifest=[];errors=[]
     for split in ['train','test']:
         rows=[]
@@ -41,6 +45,12 @@ def main():
                 table=pq.read_table(f).to_pylist()
                 manifest.append(dict(path=str(f),rows=len(table),sha256=hashlib.sha256(data).hexdigest()))
                 for i,r in enumerate(table):
+                    qid=f'{subject}/{split}/{offset+i}'
+                    if qid in repairs:
+                        fix=repairs[qid]
+                        if r['solution'].count(fix['old'])!=1:raise ValueError('repair source mismatch '+qid)
+                        r['solution']=r['solution'].replace(fix['old'],fix['new'])
+                        applied.append(fix)
                     gold=grader.extract_boxed_answer(r['solution'])
                     row=dict(id=f'{subject}/{split}/{offset+i}',subject=subject,level=r.get('level','unknown'),
                              problem=r['problem'],solution=r['solution'],gold=gold)
@@ -51,9 +61,9 @@ def main():
     key=lambda r:re.sub(r'\s+',' ',r['problem']).strip()
     test_keys={key(r) for r in sets['test']}
     overlap=[r['id'] for r in sets['train'] if key(r) in test_keys]
-    if overlap:errors.append('train_test_overlap '+str(len(overlap)))
+    eligible=[r for r in sets['train'] if key(r) not in test_keys]
     groups=defaultdict(list)
-    for r in sets['train']:groups[key(r)].append(r)
+    for r in eligible:groups[key(r)].append(r)
     strata=defaultdict(list)
     for problem,group in groups.items():
         first=group[0];strata[(first['subject'],first['level'])].append(problem)
@@ -65,8 +75,8 @@ def main():
         if len(keys)>1:count=max(1,min(len(keys)-1,count))
         else:count=0
         val_keys.update(keys[:count])
-    train=[r for r in sets['train'] if key(r) not in val_keys]
-    val=[r for r in sets['train'] if key(r) in val_keys]
+    train=[r for r in eligible if key(r) not in val_keys]
+    val=[r for r in eligible if key(r) in val_keys]
     random.Random(c['seed']+1).shuffle(val)
     lengths={};oversize=[];prompt_oversize=[]
     for name,rows in [('train',train),('validation',val),('test',sets['test'])]:
@@ -90,7 +100,7 @@ def main():
                 manifest=manifest,grader_sha256=hashlib.sha256(args.grader.read_bytes()).hexdigest(),
                 subject_level_counts={name:dict(Counter(r['subject']+'/'+r['level'] for r in rs)) for name,rs in [('train',train),('validation',val),('test',sets['test'])]},
                 lengths=lengths,oversize=oversize,prompt_oversize=prompt_oversize,train_test_overlap_ids=overlap,
-                errors=errors,ready=not errors)
+                excluded_training_ids=overlap,applied_gold_repairs=applied,errors=errors,ready=not errors)
     args.output.mkdir(parents=True,exist_ok=True)
     (args.output/'data_audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
     (args.output/'split.json').write_text(json.dumps(dict(train_ids=[r['id'] for r in train],validation_ids=[r['id'] for r in val],test_ids=[r['id'] for r in sets['test']]),indent=2))

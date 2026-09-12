@@ -8,3 +8,6 @@ __pycache__/
 *.ckpt
 *.tar.gz
 events.out.tfevents.*
+monitor_*.md
+math_pipeline/
+math_*/

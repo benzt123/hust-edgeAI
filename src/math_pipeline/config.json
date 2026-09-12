@@ -21,7 +21,8 @@
     "gold_extraction": "extract_boxed_answer(solution)",
     "gold_parse_failure": "block_and_report",
     "duplicate_problem_policy": "keep_identical_problems_in_same_split",
-    "train_test_overlap_policy": "block_and_report"
+    "train_test_overlap_policy": "exclude_training_side_and_report",
+    "gold_repairs_file": "gold_repairs.json"
   },
   "prompt": {
     "mode": "user_r1_zero_only",
