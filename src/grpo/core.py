@@ -112,7 +112,7 @@ def grpo_loss(new_log_probs, old_log_probs, advantages, response_mask, clip_eps=
     正负 advantage 都必须使用 minimum，不能直接只用 clamp 后的目标。
     new 的梯度要保留；old 和 advantage 不得收到梯度。
     """
-    // 检查输入
+    # 检查输入
     if new_log_probs.ndim != 2 or new_log_probs.numel() == 0:
         raise ValueError("log 概率必须是非空二维 tensor")
     if (

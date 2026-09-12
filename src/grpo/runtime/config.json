@@ -1,0 +1,23 @@
+{
+  "source_model": "/root/autodl-fs/posttrain/dpo-20260911-r1/best_model",
+  "sft_run": "/root/autodl-fs/posttrain/sft-full/20260908_162916_198718",
+  "sft_code": "/root/workspace/test/src/SFT_run_20260908",
+  "output": "/root/autodl-fs/posttrain/grpo-20260911-r1",
+  "seed": 42,
+  "rollout_rounds": 200,
+  "rollout_questions": 32,
+  "group_size": 8,
+  "sample_questions_per_batch": 4,
+  "smoke_questions": 4,
+  "epochs_per_rollout": 2,
+  "micro_batch": 1,
+  "effective_batch": 32,
+  "learning_rate": 0.000001,
+  "warmup_rounds": 10,
+  "clip_eps": 0.2,
+  "max_new_tokens": 1024,
+  "max_length": 4096,
+  "validation_questions": 200,
+  "eval_every": 50,
+  "save_every": 10
+}
