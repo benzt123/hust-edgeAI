@@ -28,7 +28,44 @@ class LoRALinear(nn.Module):
         A/B跟随base.weight的device和dtype，可用weight.new_zeros/new_empty。
         A/B必须可训练；不能两者同时为零。支持原层bias=None。
         """
-        raise NotImplementedError('TODO 1：LoRA参数初始化与冻结原层')
+        super().__init__()
+        if not isinstance(base_layer, nn.Linear):
+            raise TypeError("base_layer必须是nn.Linear")
+        if (
+        type(rank) is not int
+        or rank < 1
+        or rank > min(base_layer.in_features, base_layer.out_features)
+        ):
+            raise ValueError("rank 超出合法范围")
+
+        if (
+            isinstance(alpha, bool)
+            or not isinstance(alpha, (int, float))
+            or not math.isfinite(alpha)
+            or alpha <= 0
+        ):
+            raise ValueError("alpha 必须是正有限数值")
+
+        self.base = base_layer
+        self.base.weight.requires_grad_(False)
+
+        self.rank = rank
+        self.alpha = float(alpha)
+        self.scaling = self.alpha / self.rank
+
+        self.A = nn.Parameter(
+            base_layer.weight.new_zeros(
+                base_layer.out_features, 
+                rank
+            )
+        )
+        self.B = nn.Parameter(
+            base_layer.weight.new_empty(
+                rank,
+                base_layer.in_features
+            )
+        )
+        nn.init.kaiming_uniform_(self.B, a=math.sqrt(5))
 
     def forward(self, x):
         """TODO 2：原分支与低秩分支相加，保留梯度。
@@ -39,7 +76,12 @@ class LoRALinear(nn.Module):
         不先构造完整A@B，不detach，不用no_grad包住base分支。
         原层权重被冻结，但梯度仍需要穿过它回传到前面的可训练层。
         """
-        raise NotImplementedError('TODO 2：低秩前向计算')
+        base_out = self.base(x)
+
+        low_rank = F.linear(x, self.B)
+        delta = F.linear(low_rank, self.A)
+
+        return base_out + self.scaling * delta
 
 
 def inject_lora(model, rank=8, alpha=16.0):
@@ -55,7 +97,22 @@ def inject_lora(model, rank=8, alpha=16.0):
     提示：内部递归函数接收parent与prefix，将层级名称拼成完整路径。
     不调用任何LoRA/PEFT现成实现。
     """
-    raise NotImplementedError('TODO 3：递归注入FFN层')
+    replaced = []
+    def visit(parent, prefix):
+        for name, child in parent.named_children():
+            full_name = f"{prefix}.{name}" if prefix else name
+            if isinstance(child,nn.Linear):
+                continue
+            if name in TARGET_NAMES:
+                if not isinstance(child, nn.Linear):
+                    raise TypeError(f"{full_name}不是nn.Linear")
+                new_layer = LoRALinear(child, rank, alpha)
+                setattr(parent, name, new_layer)
+                replaced.append(full_name)
+            else:
+                visit(child, full_name)
+    visit(model, "")
+    return replaced
 
 
 def trainable_parameters(model):
@@ -64,7 +121,14 @@ def trainable_parameters(model):
     参数对象必须是模型的原Parameter引用，不能clone或detach。
     没有可训练参数时抛ValueError。训练前可检查名称是否仅以.A或.B结尾。
     """
-    raise NotImplementedError('TODO 4：筛选优化器参数')
+    params = [
+        parameter
+        for parameter in model.parameters()
+        if parameter.requires_grad
+    ]
+    if not params:
+        raise ValueError("模型没有可训练参数")
+    return params
 
 
 def setup_lora(model, rank=8, alpha=16.0):
