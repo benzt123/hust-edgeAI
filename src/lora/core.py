@@ -28,7 +28,6 @@ class LoRALinear(nn.Module):
         A/B跟随base.weight的device和dtype，可用weight.new_zeros/new_empty。
         A/B必须可训练；不能两者同时为零。支持原层bias=None。
         """
-        super().__init__()
         if not isinstance(base_layer, nn.Linear):
             raise TypeError("base_layer必须是nn.Linear")
         if (
@@ -47,7 +46,7 @@ class LoRALinear(nn.Module):
             raise ValueError("alpha 必须是正有限数值")
 
         self.base = base_layer
-        self.base.weight.requires_grad_(False)
+        self.base.requires_grad_(False)
 
         self.rank = rank
         self.alpha = float(alpha)
@@ -99,9 +98,9 @@ def inject_lora(model, rank=8, alpha=16.0):
     """
     replaced = []
     def visit(parent, prefix):
-        for name, child in parent.named_children():
+        for name, child in list(parent.named_children()):
             full_name = f"{prefix}.{name}" if prefix else name
-            if isinstance(child,nn.Linear):
+            if isinstance(child, LoRALinear):
                 continue
             if name in TARGET_NAMES:
                 if not isinstance(child, nn.Linear):

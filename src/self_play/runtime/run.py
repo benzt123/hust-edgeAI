@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import random
+import re
 import sys
 import time
 
@@ -93,15 +94,33 @@ def main():
     if args.phase=='train' and (out/'training_complete.json').exists():return
     model=load_model(source);backend=TransformersBackend(model,tokenizer,c)
     optimizer=torch.optim.AdamW(model.parameters(),lr=c['learning_rate'],betas=(.9,.95),weight_decay=0.,foreach=False)
-    def make_round(count,seen,round_id):
-        torch.manual_seed(c['seed']+round_id)
-        generations=backend.generate([student.PROBLEM_GEN_PROMPT]*count)
+    def make_round(count,seen,round_id,attempt=0):
+        sample_seed=c['seed']+round_id+attempt*1000003
+        artifact=f'{round_id:04d}' if attempt==0 else f'{round_id:04d}_attempt_{attempt}'
+        torch.manual_seed(sample_seed)
+        prompts=[c.get('problem_gen_prompt',student.PROBLEM_GEN_PROMPT)]*count
+        if c.get('use_training_seeds',False):
+            seed_ids=random.Random(sample_seed).sample(sorted(split['train_ids']),count)
+            prompts=[c['problem_gen_prompt'].replace('{seed_problem}',mapping[i]['question']) for i in seed_ids]
+            dump(out/'rounds'/f'{artifact}_seed_ids.json',seed_ids)
+        if c.get('verified_arithmetic',False):
+            from verified_arithmetic import generate
+            generations=generate(count,sample_seed)
+        else:
+            generations=backend.generate(prompts)
         # 原始出题文本先保存，后续评分失败仍可审查。
-        dump(out/'rounds'/f'{round_id:04d}_generations.json',generations)
-        result=prepare_round(generations,backend.solve,numeric_grader.score,
+        dump(out/'rounds'/f'{artifact}_generations.json',generations)
+        eligible=[]
+        for generation in generations:
+            question,_=student.parse_problem_and_answer(generation['text'])
+            if question and re.search(r'<<|\b(?:solution|explanation|dep\.\s*steps)\s*[:\d]|\d\s*[+*/=]\s*\d',question,re.I):
+                continue
+            eligible.append(generation)
+        result=prepare_round(eligible,backend.solve,numeric_grader.score,
             lambda a:numeric_grader.number(a) is not None,template,c['group_size'],blocked|set(seen))
         result['generations']=generations
-        dump(out/'rounds'/f'{round_id:04d}_rollout.json',result)
+        result['sampling_attempt']=attempt
+        dump(out/'rounds'/f'{artifact}_rollout.json',result)
         return result
     def update(records,round_id):
         return train_records(model,optimizer,records,tokenizer.eos_token_id,
@@ -119,7 +138,8 @@ def main():
         dump(out/(args.phase+'.json'),result)
         print(args.phase.upper(),result['stats'],flush=True);return
     metadata=dict(round=0,steps=0,seen=[],empty_rounds=0,best=None)
-    checkpoint=out/'latest.pt'
+    checkpoint=Path(c.get('checkpoint_path',str(out/'latest.pt')))
+    checkpoint.parent.mkdir(parents=True,exist_ok=True)
     if checkpoint.exists():
         metadata=restore(checkpoint,model,optimizer,fingerprint)
         # checkpoint之后的验证不允许复用；旧产物保留为中断记录。
@@ -133,6 +153,11 @@ def main():
         save(checkpoint,model,optimizer,fingerprint,metadata);dump(out/'best.json',metadata['best'])
     for round_id in range(metadata['round']+1,c['rounds']+1):
         tick=time.monotonic();result=make_round(c['problems_per_round'],metadata['seen'],round_id)
+        retry_seen=list(metadata['seen'])
+        for attempt in range(1,3):
+            if result['stats']['informative_groups']>0:break
+            retry_seen.extend(student.problem_key(p['problem']) for p in result['problems'])
+            result=make_round(c['problems_per_round'],retry_seen,round_id,attempt)
         informative=result['stats']['informative_groups']>0
         metadata['empty_rounds']=0 if informative else metadata['empty_rounds']+1
         if metadata['empty_rounds']>=c['max_empty_rounds']:

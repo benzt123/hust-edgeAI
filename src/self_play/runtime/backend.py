@@ -64,7 +64,16 @@ class TransformersBackend:
 
     def generate(self,prompts):
         # Proposer只接受Problem/Answer协议，训练适配性由audit阶段实测。
-        return self.sample(prompts,self.config['problem_max_new_tokens'])
+        samples=self.sample(prompts,self.config['problem_max_new_tokens'])
+        # 可选的出题字段前缀属于真实prompt，不属于采样动作；保留原始续写。
+        prefix=self.config.get('problem_output_prefix','')
+        if prefix:
+            if any(not p.endswith(prefix) for p in prompts):
+                raise ValueError('出题字段前缀必须与实际prompt结尾一致')
+            for sample in samples:
+                sample['raw_completion']=sample['text']
+                sample['text']=prefix+sample['text']
+        return samples
 
     @torch.no_grad()
     def solve(self,requests,group_size):

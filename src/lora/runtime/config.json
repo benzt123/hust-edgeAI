@@ -1,0 +1,16 @@
+{
+  "base_model": "/root/autodl-fs/posttrain/grpo-20260911-r1/best_model",
+  "data": "/root/autodl-tmp/physics/physics.jsonl",
+  "output": "/root/autodl-fs/posttrain/lora-physics-r1",
+  "device": "cuda",
+  "seed": 42,
+  "rank": 8,
+  "alpha": 16,
+  "epochs": 3,
+  "learning_rate": 0.0001,
+  "micro_batch": 1,
+  "effective_batch": 8,
+  "max_length": 2048,
+  "save_every": 50,
+  "generation_max_new_tokens": 1024
+}
