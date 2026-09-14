@@ -1,0 +1,20 @@
+{
+  "step": null,
+  "summary": [
+    {
+      "arm": "math_dpo",
+      "cap": 1024,
+      "count": 32,
+      "correct": 15,
+      "truncated": 0
+    },
+    {
+      "arm": "math_dpo",
+      "cap": 2048,
+      "count": 32,
+      "correct": 15,
+      "truncated": 0
+    }
+  ],
+  "time": 1789382445.555848
+}

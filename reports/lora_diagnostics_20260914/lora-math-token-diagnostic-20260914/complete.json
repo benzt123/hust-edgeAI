@@ -1,0 +1,34 @@
+{
+  "step": 800,
+  "summary": [
+    {
+      "arm": "baseline",
+      "cap": 1024,
+      "count": 32,
+      "correct": 18,
+      "truncated": 10
+    },
+    {
+      "arm": "baseline",
+      "cap": 2048,
+      "count": 32,
+      "correct": 18,
+      "truncated": 10
+    },
+    {
+      "arm": "step_adapter",
+      "cap": 1024,
+      "count": 32,
+      "correct": 11,
+      "truncated": 7
+    },
+    {
+      "arm": "step_adapter",
+      "cap": 2048,
+      "count": 32,
+      "correct": 11,
+      "truncated": 7
+    }
+  ],
+  "time": 1789382025.7720814
+}
